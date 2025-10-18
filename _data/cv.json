@@ -1,152 +1,222 @@
 {
   "basics": {
-    "name": "Your Sidebar Name",
-    "email": "none@example.org",
-    "phone": "",
-    "website": "https://academicpages.github.io",
-    "summary": "Currently employed at Red Brick University. Short biography for the left-hand sidebar",
+    "name": "Saeedreza Zouashkiani",
+    "email": "saeedzou2012@gmail.com",
+    "phone": "+98-915-415-76-30",
+    "website": "https://saeedzou.github.io",
+    "summary": "AI Researcher with expertise in Speech Processing, Large Language Models, and Reinforcement Learning. Currently at the Foundation AI Models Lab, Sharif University of Technology.",
     "location": {
       "address": "",
       "postalCode": "",
-      "city": "Earth",
-      "countryCode": "US",
-      "region": ""
+      "city": "Mashad",
+      "countryCode": "IR",
+      "region": "Iran"
     },
     "profiles": [
       {
-        "network": "Google Scholar",
-        "username": "",
-        "url": "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
-      },
-      {
-        "network": "ORCID",
-        "username": "",
-        "url": "https://orcid.org/yourorcidurl"
-      },
-      {
         "network": "GitHub",
-        "username": "academicpages",
-        "url": "https://github.com/academicpages"
+        "username": "saeedzou",
+        "url": "https://github.com/saeedzou"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "saeed-zouashkiani",
+        "url": "https://linkedin.com/in/saeed-zouashkiani"
       }
     ]
   },
-  "work": [],
-  "education": [
+  "work": [
     {
-      "institution": "GitHub University",
-      "area": "Ph.D in Version Control Theory",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2018",
-      "gpa": null,
-      "courses": []
+      "company": "Foundation AI Models Lab, Sharif University of Technology",
+      "position": "AI Researcher, Automatic Speech Recognition",
+      "website": "",
+      "startDate": "2024-08",
+      "endDate": "Present",
+      "summary": "Conducted research on ASR architectures, trained top-performing models, and led a project integrating continual dataset growth, achieving state-of-the-art results for Persian ASR."
     },
     {
-      "institution": "GitHub University",
-      "area": "M.S. in Jekyll",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2014",
-      "gpa": null,
-      "courses": []
+      "company": "Bimeh Dot Com, Sepas Holding",
+      "position": "AI Consultant",
+      "website": "",
+      "startDate": "2025-05",
+      "endDate": "Present",
+      "summary": "Developed automated pipelines for document understanding, researched RL applications in finance, and built an OCR pipeline for car insurance card processing."
     },
     {
-      "institution": "GitHub University",
-      "area": "B.S. in GitHub",
-      "studyType": "",
-      "startDate": "",
-      "endDate": "2012",
-      "gpa": null,
-      "courses": []
+      "company": "Foundation AI Models Lab, Sharif University of Technology",
+      "position": "AI Researcher, Text-to-Speech",
+      "website": "",
+      "startDate": "2025-03",
+      "endDate": "Present",
+      "summary": "Developed a G2P pipeline for Persian, compiled a high-quality audiobook corpus, and trained the first bilingual Persian-English zero-shot TTS model."
+    },
+    {
+      "company": "Foundation AI Models Lab, Sharif University of Technology",
+      "position": "AI Researcher, Voice Conversion",
+      "website": "",
+      "startDate": "2025-03",
+      "endDate": "Present",
+      "summary": "Leading research on voice conversion, including emotion transferability, and fine-tuning a model on 1,000 hours of Persian audio data."
+    },
+    {
+      "company": "Foundation AI Models Lab, Sharif University of Technology",
+      "position": "AI Researcher, Speech Data Creation Pipeline",
+      "website": "",
+      "startDate": "2024-08",
+      "endDate": "2025-07",
+      "summary": "Collected and processed over 11.8k hours of audio data, created a scalable validation pipeline, and produced large-scale datasets for ASR, TTS, and VC."
+    },
+    {
+      "company": "Sharif University of Technology",
+      "position": "Graduate Researcher, MSc Thesis",
+      "website": "",
+      "startDate": "2021-09",
+      "endDate": "2024-06",
+      "summary": "Proposed a hybrid meta-reinforcement learning framework for dynamic edge offloading, reducing trainable parameters and leveraging deep learning for scalable edge orchestration."
     }
   ],
-  "skills": [],
-  "languages": [],
-  "interests": [],
+  "education": [
+    {
+      "institution": "Sharif University of Technology",
+      "area": "M.Sc. in Communication Systems",
+      "studyType": "M.Sc.",
+      "startDate": "2021-09",
+      "endDate": "2024-06",
+      "gpa": "3.7/4.0",
+      "courses": ["Deep Learning", "Convex Optimization", "Adaptive Filters"]
+    },
+    {
+      "institution": "Amirkabir University of Technology",
+      "area": "B.Sc. in Electrical Engineering",
+      "studyType": "B.Sc.",
+      "startDate": "2016-09",
+      "endDate": "2021-09",
+      "gpa": "3.2/4.0",
+      "courses": ["Statistical Learning", "Linear Algebra"]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming",
+      "level": "",
+      "keywords": ["Python", "Vibe Coding", "MATLAB", "Bash"]
+    },
+    {
+      "name": "AI Frameworks",
+      "level": "",
+      "keywords": ["PyTorch", "TensorFlow", "Scikit-learn", "OpenCV", "Hugging Face"]
+    },
+    {
+      "name": "AI Domains",
+      "level": "",
+      "keywords": ["Speech Processing", "Natural Language Processing", "Computer Vision", "Reinforcement Learning", "Prompt Engineering"]
+    },
+    {
+      "name": "Simulation & Tools",
+      "level": "",
+      "keywords": ["Git", "Docker", "Linux (Ubuntu)"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Persian",
+      "fluency": "Native"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Speech Processing",
+      "keywords": ["Automatic Speech Recognition (ASR)", "Text-to-Speech (TTS)", "Voice Conversion (VC)"]
+    },
+    {
+      "name": "Large Language Models",
+      "keywords": ["Retrieval-Augmented Generation (RAG)", "Agentic Frameworks"]
+    },
+    {
+      "name": "Reinforcement Learning",
+      "keywords": ["Optimization Techniques", "Exploration Strategies"]
+    }
+  ],
   "references": [],
   "publications": [
     {
-      "name": "Paper Title Number 1",
-      "publisher": "Journal 1",
-      "releaseDate": "2009-10-01",
-      "website": "https://academicpages.github.io/files/paper1.pdf",
-      "summary": "This paper is about the number 1. The number 2 is left for future work."
+      "name": "PersianVox: A Dual-ASR Approach for Speech Corpus Generation",
+      "publisher": "under publication for ICASSP 2026 submission",
+      "releaseDate": "",
+      "website": "",
+      "summary": "Zouashkiani, S., Soleimani Roudi, S., Amini, S., and Ghaemmaghami, S."
     },
     {
-      "name": "Paper Title Number 2",
-      "publisher": "Journal 1",
-      "releaseDate": "2010-10-01",
-      "website": "https://academicpages.github.io/files/paper2.pdf",
-      "summary": "This paper is about the number 2. The number 3 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 3",
-      "publisher": "Journal 1",
-      "releaseDate": "2015-10-01",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about the number 3. The number 4 is left for future work."
-    },
-    {
-      "name": "Paper Title Number 4",
-      "publisher": "GitHub Journal of Bugs",
-      "releaseDate": "2024-02-17",
-      "website": "https://academicpages.github.io/files/paper3.pdf",
-      "summary": "This paper is about fixing template issue #693."
-    }
-  ],
-  "presentations": [
-    {
-      "name": "Talk 1 on Relevant Topic in Your Field",
-      "event": "UC San Francisco, Department of Testing",
-      "date": "2012-03-01",
-      "location": "San Francisco, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Tutorial 1 on Relevant Topic in Your Field",
-      "event": "UC-Berkeley Institute for Testing Science",
-      "date": "2013-03-01",
-      "location": "Berkeley, CA, USA",
-      "description": ""
-    },
-    {
-      "name": "Talk 2 on Relevant Topic in Your Field",
-      "event": "London School of Testing",
-      "date": "2014-02-01",
-      "location": "London, UK",
-      "description": ""
-    },
-    {
-      "name": "Conference Proceeding talk 3 on Relevant Topic in Your Field",
-      "event": "Testing Institute of America 2014 Annual Conference",
-      "date": "2014-03-01",
-      "location": "Los Angeles, CA, USA",
-      "description": ""
+      "name": "A Survey on Non-Intrusive ASR Refinement: From Output-Level Correction to Full-Model Distillation",
+      "publisher": "arXiv:2508.07285",
+      "releaseDate": "2025",
+      "website": "https://arxiv.org/abs/2508.07285",
+      "summary": "Peyghan, M. R., Rajabi, F., Soleimani Roudi, S., Zouashkiani, S., Amini, S., and Ghaemmaghami, S."
     }
   ],
   "teaching": [
     {
-      "course": "Teaching experience 1",
-      "institution": "University 1, Department",
-      "date": "2014-01-01",
-      "role": "Undergraduate course",
-      "description": ""
+      "course": "Deep Learning",
+      "institution": "Sharif University of Technology",
+      "date": "2024-09",
+      "role": "Head Teaching Assistant"
     },
     {
-      "course": "Teaching experience 2",
-      "institution": "University 1, Department",
-      "date": "2015-01-01",
-      "role": "Workshop",
-      "description": ""
+      "course": "Introduction to Machine Learning",
+      "institution": "Sharif University of Technology",
+      "date": "2023-02",
+      "role": "Teaching Assistant"
+    },
+    {
+      "course": "Machine Learning",
+      "institution": "Sharif University of Technology",
+      "date": "2023-02",
+      "role": "Course Coordinator"
+    },
+    {
+      "course": "Communication Systems",
+      "institution": "Sharif University of Technology",
+      "date": "2023-02",
+      "role": "Teaching Assistant"
+    },
+    {
+      "course": "Adaptive Filter",
+      "institution": "Sharif University of Technology",
+      "date": "2022-09",
+      "role": "Teaching Assistant"
+    },
+    {
+      "course": "Linear Algebra",
+      "institution": "Amirkabir University of Technology",
+      "date": "2021-03",
+      "role": "Guest Lecturer"
     }
   ],
   "portfolio": [
     {
-      "name": "Portfolio item number 1",
-      "category": "portfolio",
-      "date": "",
-      "url": "",
-      "description": "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
+      "name": "Persian ASR, Translation & Summarization App",
+      "category": "Gradio",
+      "date": "2025-02",
+      "url": "https://huggingface.co/spaces/saeedzou/Persian_ASR_Text_Summarization",
+      "description": "Developed a Gradio app for Persian ASR, with support for multilingual translation and summarization of transcriptions using Gemini API."
+    },
+    {
+      "name": "ParsNorm: Advanced Persian Text Normalization",
+      "category": "GitHub",
+      "date": "2024-12",
+      "url": "https://github.com/saeedzou/ParsNorm",
+      "description": "Developed a comprehensive text normalization pipeline and a unique English-to-Persian transliteration tool."
+    },
+    {
+      "name": "Pin Insulator Instance Segmentation with YOLOv8",
+      "category": "GitHub",
+      "date": "2023-08",
+      "url": "https://github.com/saeedzou/InsulatorDetSeg",
+      "description": "Trained a YOLOv8 segmentation model on the CLIPD dataset, achieving 96.41% mAP50."
     }
   ]
 }
