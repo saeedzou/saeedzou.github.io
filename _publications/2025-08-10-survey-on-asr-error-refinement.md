@@ -7,5 +7,5 @@ excerpt: 'This survey provides a structured, end-to-end map of non-intrusive ASR
 date: 2025-10-19
 venue: 'arXiv'
 paperurl: 'https://arxiv.org/abs/2508.07285'
-citation: 'Zou, Saeed. (2025). "A Survey on Automatic Speech Recognition Error Refinement." <i>arXiv</i>.'
+citation: 'Peyghan, M. R., Rajabi, F., Soleimani Roudi, S., <b>Zouashkiani, S.</b>, Amini, S., & Ghaemmaghami, S. (2025). "A Survey on Automatic Speech Recognition Error Refinement." <i>arXiv</i>.'
 ---
