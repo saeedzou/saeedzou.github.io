@@ -93,7 +93,7 @@ The following results report:
 Unlike ASR + LLM results reported in [1], PR + LLM shows weaker separability between gibberish and clean speech.
 
 ![PR + LLM](files/pr+llm.png)
-![ASR + LLM](filesasr+llm.png)
+![ASR + LLM](files/asr+llm.png)
 ---
 
 ## Discussion
