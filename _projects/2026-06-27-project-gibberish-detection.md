@@ -1,200 +1,130 @@
 ---
 title: "Gibberish Speech Detection via Phonetic vs Acoustic Representations"
 date: 2026-06-27
-tags: [speech-processing, gibberish-detection, ssl, asr, wav2vec2, zipa, research]
+tags: [speech-processing, zipa, wav2vec2, gibberish-detection]
 ---
 
 ## Overview
 
-This project investigates the problem of **gibberish speech detection** using multiple speech representation paradigms. The central question is whether gibberish is primarily detectable through:
+This project studies **gibberish speech detection** using two representation families:
 
-- phonetic structure (ASR / phoneme models), or  
-- higher-level acoustic or linguistic representations (self-supervised learning models, LLM scoring).
+- phoneme-based representations (ZIPA CR-CTC model)
+- self-supervised acoustic representations (wav2vec2)
 
-We evaluate this using the EARS dataset family and the EARS-WHAM Gibberish Test set, combined with modern speech and language models.
+The goal is to evaluate whether gibberish detection is better modeled in phonetic space or in learned acoustic embedding space.
+
+We use the EARS dataset and the EARS-WHAM Gibberish Test set.
 
 ---
 
 ## Dataset
 
-### Sources
+We use:
 
-- **EARS dataset** (clean speech, multi-speaker recordings)  
-  
+- **EARS dataset** (clean speech, multi-speaker recordings) [2]
 
-- **EARS-WHAM Gibberish Test set**, introduced in:  
-  *Are These Even Words? Quantifying the Gibberishness of Generative Speech Models* (2025)
+- **EARS-WHAM Gibberish Test set** [3], introduced in:  
+  *Are These Even Words? (2025)* [1]
 
-### Construction Strategy
+### Splitting strategy
 
-To avoid speaker leakage:
-
-- One speaker is held out entirely as **test set**
-- Remaining speakers are split into:
+- One speaker is held out entirely as test set  (p103)
+- Remaining data split into:
   - 90% training
-  - 10% validation
-
-Additionally, a subset of speakers appears in both clean and gibberish conditions, reducing the risk that models rely purely on speaker identity.
+  - 10% validation  
 
 ---
 
 ## Methods
 
-### 1. ZIPA Phoneme-Based Representation
+We evaluate two feature extraction pipelines:
 
-We use the **ZIPA CR-CTC phoneme recognition model** to convert speech into phoneme distributions.
+### ZIPA [5] features
+- phoneme posterior sequences from ZIPA CR-CTC model [4]
+- sequence models applied on top:
+  - mean pooling
+  - attention pooling
 
-- Input: log-mel filterbanks
-- Output: phoneme posterior sequences
+### wav2vec2 features
+- self-supervised contextual embeddings from wav2vec2 [6]
+- same sequence models applied:
+  - mean pooling
+  - attention pooling
 
-Two modeling approaches were tested:
-- handcrafted statistical features over phoneme posteriors
-- GRU-based sequence modeling
+### Classifier architecture (both settings)
 
----
-
-### 2. wav2vec2 Self-Supervised Features
-
-We extract frame-level embeddings from wav2vec2:
-
-- Input: raw waveform
-- Output: contextual acoustic embeddings
-- Model trained via GRU + attention pooling classifier
-
----
-
-### 3. Sequence Classifier Architecture
-
-Across experiments, a shared architecture is used:
-
-- Linear projection layer
-- Bi-directional GRU
-- Attention pooling (replacing mean pooling in later experiments)
+- linear projection layer
+- bi-directional GRU
+- pooling (mean or attention)
 - MLP classification head
-
-Loss: binary cross-entropy  
-Metric: ROC-AUC
-
----
-
-### 4. Phoneme-Language Model Scoring
-
-We also evaluate a hybrid pipeline:
-
-1. Decode speech using ZIPA
-2. Feed phoneme sequences into **Qwen3.5-4B**
-3. Compute perplexity over phoneme sequences
-4. Compare distributions between clean vs gibberish speech
+- binary cross entropy loss
+- evaluation metric: ROC-AUC
 
 ---
 
 ## Results
 
-### 1. Logistic Regression on Handcrafted ZIPA Features
+The following results report:
 
-- Cross-validation AUC: ~0.60 ± 0.08  
-- Best observed AUC: **0.83**
+- first value = validation AUC  
+- second value = test AUC (computed using best validation checkpoint)
 
----
+### ZIPA features
 
-### 2. GRU on ZIPA Features
+- mean pooling: **0.874 / 0.827**
+- attention pooling: **0.945 / 0.890**
 
-| Model Variant | Best Validation AUC |
-|--------------|---------------------|
-| Mean pooling | ~0.81–0.83 |
-| Attention pooling | **0.869** |
+### wav2vec2 features
 
----
-
-### 3. GRU on wav2vec2 Features
-
-| Model | Validation AUC | Test AUC |
-|------|----------------|----------|
-| wav2vec2 + GRU + attention | **1.000** | **1.000** |
-
----
-
-### 4. ZIPA vs wav2vec2 Comparison
-
-| Representation | Best AUC | Behavior |
-|----------------|----------|----------|
-| ZIPA phonemes | ~0.87 | Moderate separability |
-| wav2vec2 embeddings | **1.00** | Perfect separability |
-
----
-
-### 5. Phoneme-LM Perplexity (Qwen3.5-4B)
-
-- Clean and gibberish distributions show partial overlap
-- Weak separability compared to ASR+LLM results in:
-  *Are These Even Words?* (2025)
+- mean pooling: **1.000 / 1.000**
+- attention pooling: **1.000 / 1.000**
 
 ---
 
 ## Discussion
 
-### Phonetic vs Acoustic Signal
+The results show a clear difference between phoneme-based and acoustic self-supervised representations:
 
-The experiments suggest:
+- ZIPA features provide strong but imperfect separability
+- wav2vec2 features achieve perfect separation under both pooling strategies
 
-- phoneme-level representations (ZIPA) provide limited but useful signal
-- wav2vec2 embeddings provide very strong separability
+This suggests that:
 
-This indicates that:
-> gibberish detection is not purely a phonetic modeling problem.
+- phoneme-level representations still retain useful signal for distinguishing gibberish vs clean speech
+- however, self-supervised acoustic embeddings capture stronger discriminative structure for this task
 
-However, the perfect performance of wav2vec2-based classifiers also suggests:
-- possible dataset-specific acoustic artifacts
-- or that SSL embeddings capture non-linguistic cues correlated with the labels
+A key observation is that attention pooling improves ZIPA performance significantly, but does not change the overall ranking between feature types.
 
 ---
 
-## Comparison to Prior Work
+## Relation to Prior Work
 
-The paper *Are These Even Words?* (2025) argues that:
+[1] argues that combining ASR outputs with language models improves gibberish detection.
 
-- ASR + LLM pipelines provide strong sensitivity to gibberish speech
-- linguistic modeling improves detection performance
+https://arxiv.org/pdf/2510.21317
 
-### Relation to this work
+In contrast, this work finds:
 
-- This work evaluates **phoneme-level decoding (ZIPA)** instead of word-level ASR output
-- We evaluate **phoneme perplexity using an LLM (Qwen3.5-4B)**
+- phoneme-level modeling (ZIPA) is sufficient for strong but not perfect separation
+- acoustic SSL embeddings (wav2vec2) yield near-perfect separability in this dataset setup
 
-### Key observation
+This does not contradict prior work, but suggests:
 
-- Phoneme-level LLM scoring shows weak separability
-- This differs from the stronger separability reported in ASR+LLM pipelines
-
-### Interpretation
-
-This does not strictly contradict prior work, but suggests:
-
-- word/subword structure may be crucial for LLM-based separation
-- phoneme-level abstraction may remove critical linguistic information used by LLMs
+- word/subword-level linguistic structure (used in ASR+LLM pipelines) may be more informative than phoneme-only representations
+- SSL embeddings may also capture non-linguistic artifacts correlated with the dataset labels
 
 ---
 
-## Conclusion
+## References
 
-This project evaluates gibberish detection across phonetic and acoustic representations.
+[1] Are These Even Words? Quantifying the Gibberishness of Generative Speech Models (2025). https://arxiv.org/pdf/2510.21317
 
-Key findings:
+[2] EARS Dataset. https://sp-uhh.github.io/ears_dataset/
 
-- wav2vec2 embeddings achieve near-perfect classification performance
-- ZIPA phoneme representations provide moderate separability
-- phoneme-level LLM scoring does not reproduce strong ASR+LLM separability
-- attention-based sequence modeling improves performance but does not close the gap
+[3] EARS-WHAM Gibberish Test set. https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/icassp2026-gibberish
 
-### Main Insight
+[4] anyspeech/zipa-small-crctc-500k.https://huggingface.co/anyspeech/zipa-large-crctc-500k
 
-> Gibberish detection appears to depend more on higher-level linguistic structure than phoneme-level representations, while acoustic SSL embeddings may exploit additional non-linguistic cues.
+[5] ZIPA: A family of efficient models for multilingual phone recognition. https://arxiv.org/abs/2505.23170
 
----
-
-## Future Work
-
-- Control for dataset artifacts leading to near-perfect wav2vec2 performance
-- Direct comparison with word-level ASR + LLM pipelines
-- Hierarchical phoneme-to-word modeling
-- Cross-dataset generalization tests
+[6] wav2vec 2.0: A Framework for Self-Supervised Learning of Speech Representations. https://arxiv.org/abs/2006.11477
