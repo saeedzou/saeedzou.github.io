@@ -60,6 +60,15 @@ We evaluate two feature extraction pipelines:
 - binary cross entropy loss
 - evaluation metric: ROC-AUC
 
+
+### PR + LLM features
+
+- phoneme sequences extracted using ZIPA CR-CTC model [4]
+- sequences treated as text input
+- perplexity computed using Qwen3.5-4B [7]
+
+This setup follows ASR + LLM-style scoring from prior work [1], but operates at the phoneme level instead of word/subword transcripts.
+
 ---
 
 ## Results
@@ -79,6 +88,12 @@ The following results report:
 - mean pooling: **1.000 / 1.000**
 - attention pooling: **1.000 / 1.000**
 
+### PR + LLM features
+
+Unlike ASR + LLM results reported in [1], PR + LLM shows weaker separability between gibberish and clean speech.
+
+![PR + LLM](pr+llm.png)
+![ASR + LLM](asr+llm.png)
 ---
 
 ## Discussion
@@ -94,6 +109,8 @@ This suggests that:
 - however, self-supervised acoustic embeddings capture stronger discriminative structure for this task
 
 A key observation is that attention pooling improves ZIPA performance significantly, but does not change the overall ranking between feature types.
+
+PR + LLM further supports this trend: phoneme-level transcription is less suitable for LLM-based scoring compared to word/subword ASR pipelines in [1].
 
 ---
 
