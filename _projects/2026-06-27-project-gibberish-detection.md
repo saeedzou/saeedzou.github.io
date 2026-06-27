@@ -20,11 +20,10 @@ We evaluate this using the EARS dataset family and the EARS-WHAM Gibberish Test 
 ### Sources
 
 - **EARS dataset** (clean speech, multi-speaker recordings)  
-  :contentReference[oaicite:0]{index=0}  
+  
 
 - **EARS-WHAM Gibberish Test set**, introduced in:  
-  *Are These Even Words? Quantifying the Gibberishness of Generative Speech Models* (2025)  
-  :contentReference[oaicite:1]{index=1}  
+  *Are These Even Words? Quantifying the Gibberishness of Generative Speech Models* (2025)
 
 ### Construction Strategy
 
@@ -128,8 +127,7 @@ We also evaluate a hybrid pipeline:
 
 - Clean and gibberish distributions show partial overlap
 - Weak separability compared to ASR+LLM results in:
-
-  *Are These Even Words?* (2025) :contentReference[oaicite:2]{index=2}  
+  *Are These Even Words?* (2025)
 
 ---
 
