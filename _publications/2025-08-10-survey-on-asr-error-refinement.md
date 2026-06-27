@@ -7,5 +7,5 @@ excerpt: "<b>Abstract:</b> Automatic Speech Recognition (ASR) is an integral com
 date: 2025-10-19
 venue: 'arXiv'
 paperurl: 'https://arxiv.org/abs/2508.07285'
-citation: 'Peyghan, M. R., Soleimani Roudi, S., <b>Zouashkiani, S.</b>, Amini, S., Rajabi, F., & Ghaemmaghami, S. (2025). "A Survey on Automatic Speech Recognition Error Refinement." <i>arXiv</i>.'
+citation: 'Peyghan, M. R., Soleimani Roudi, S., <b>Zouashkiani, S.</b>, Amini, S., Rajabi, F., & Ghaemmaghami, S. (2025). "Non-Intrusive Automatic Speech Recognition Refinement: A Survey." <i>arXiv</i>.'
 ---
